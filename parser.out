@@ -1,0 +1,1106 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    FUNCTION
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statements .
+Rule 2     program -> empty
+Rule 3     statements -> statements ; statement
+Rule 4     statement -> { statements }
+Rule 5     statements -> statement
+Rule 6     statement -> assign-stat
+Rule 7     statement -> if-stat
+Rule 8     statement -> while-stat
+Rule 9     statement -> input-stat
+Rule 10    statement -> output-stat
+Rule 11    statement -> var-statement
+Rule 12    var-statement -> var-statement , IDENT
+Rule 13    var-statement -> VAR IDENT
+Rule 14    assign-stat -> IDENT = expr
+Rule 15    expr -> ( expr )
+Rule 16    expr -> expr + value
+Rule 17    expr -> expr - value
+Rule 18    expr -> + value
+Rule 19    expr -> - value
+Rule 20    expr -> value
+Rule 21    value -> CONST
+Rule 22    value -> IDENT
+Rule 23    if-stat -> if-then
+Rule 24    if-stat -> if-then-else
+Rule 25    if-then -> if-part THEN statement
+Rule 26    if-then-else -> if-then ELSE statement
+Rule 27    if-part -> IF log-expr
+Rule 28    log-expr -> expr > expr
+Rule 29    log-expr -> expr < expr
+Rule 30    log-expr -> expr EQUAL expr
+Rule 31    while-stat -> while-part do-expr
+Rule 32    while-part -> WHILE log-expr
+Rule 33    do-expr -> DO statement
+Rule 34    input-stat -> INPUT IDENT
+Rule 35    output-stat -> OUTPUT expr
+Rule 36    empty -> <empty>
+
+Terminals, with rules where they appear
+
+(                    : 15
+)                    : 15
++                    : 16 18
+,                    : 12
+-                    : 17 19
+.                    : 1
+;                    : 3
+<                    : 29
+=                    : 14
+>                    : 28
+CONST                : 21
+DO                   : 33
+ELSE                 : 26
+EQUAL                : 30
+FUNCTION             : 
+IDENT                : 12 13 14 22 34
+IF                   : 27
+INPUT                : 34
+OUTPUT               : 35
+THEN                 : 25
+VAR                  : 13
+WHILE                : 32
+error                : 
+{                    : 4
+}                    : 4
+
+Nonterminals, with rules where they appear
+
+assign-stat          : 6
+do-expr              : 31
+empty                : 2
+expr                 : 14 15 16 17 28 28 29 29 30 30 35
+if-part              : 25
+if-stat              : 7
+if-then              : 23 26
+if-then-else         : 24
+input-stat           : 9
+log-expr             : 27 32
+output-stat          : 10
+program              : 0
+statement            : 3 5 25 26 33
+statements           : 1 3 4
+value                : 16 17 18 19 20
+var-statement        : 11 12
+while-part           : 31
+while-stat           : 8
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statements .
+    (2) program -> . empty
+    (3) statements -> . statements ; statement
+    (5) statements -> . statement
+    (36) empty -> .
+    (4) statement -> . { statements }
+    (6) statement -> . assign-stat
+    (7) statement -> . if-stat
+    (8) statement -> . while-stat
+    (9) statement -> . input-stat
+    (10) statement -> . output-stat
+    (11) statement -> . var-statement
+    (14) assign-stat -> . IDENT = expr
+    (23) if-stat -> . if-then
+    (24) if-stat -> . if-then-else
+    (31) while-stat -> . while-part do-expr
+    (34) input-stat -> . INPUT IDENT
+    (35) output-stat -> . OUTPUT expr
+    (12) var-statement -> . var-statement , IDENT
+    (13) var-statement -> . VAR IDENT
+    (25) if-then -> . if-part THEN statement
+    (26) if-then-else -> . if-then ELSE statement
+    (32) while-part -> . WHILE log-expr
+    (27) if-part -> . IF log-expr
+
+    $end            reduce using rule 36 (empty -> .)
+    {               shift and go to state 5
+    IDENT           shift and go to state 12
+    INPUT           shift and go to state 16
+    OUTPUT          shift and go to state 17
+    VAR             shift and go to state 18
+    WHILE           shift and go to state 20
+    IF              shift and go to state 21
+
+    program                        shift and go to state 1
+    statements                     shift and go to state 2
+    empty                          shift and go to state 3
+    statement                      shift and go to state 4
+    assign-stat                    shift and go to state 6
+    if-stat                        shift and go to state 7
+    while-stat                     shift and go to state 8
+    input-stat                     shift and go to state 9
+    output-stat                    shift and go to state 10
+    var-statement                  shift and go to state 11
+    if-then                        shift and go to state 13
+    if-then-else                   shift and go to state 14
+    while-part                     shift and go to state 15
+    if-part                        shift and go to state 19
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statements . .
+    (3) statements -> statements . ; statement
+
+    .               shift and go to state 22
+    ;               shift and go to state 23
+
+
+state 3
+
+    (2) program -> empty .
+
+    $end            reduce using rule 2 (program -> empty .)
+
+
+state 4
+
+    (5) statements -> statement .
+
+    .               reduce using rule 5 (statements -> statement .)
+    ;               reduce using rule 5 (statements -> statement .)
+    }               reduce using rule 5 (statements -> statement .)
+
+
+state 5
+
+    (4) statement -> { . statements }
+    (3) statements -> . statements ; statement
+    (5) statements -> . statement
+    (4) statement -> . { statements }
+    (6) statement -> . assign-stat
+    (7) statement -> . if-stat
+    (8) statement -> . while-stat
+    (9) statement -> . input-stat
+    (10) statement -> . output-stat
+    (11) statement -> . var-statement
+    (14) assign-stat -> . IDENT = expr
+    (23) if-stat -> . if-then
+    (24) if-stat -> . if-then-else
+    (31) while-stat -> . while-part do-expr
+    (34) input-stat -> . INPUT IDENT
+    (35) output-stat -> . OUTPUT expr
+    (12) var-statement -> . var-statement , IDENT
+    (13) var-statement -> . VAR IDENT
+    (25) if-then -> . if-part THEN statement
+    (26) if-then-else -> . if-then ELSE statement
+    (32) while-part -> . WHILE log-expr
+    (27) if-part -> . IF log-expr
+
+    {               shift and go to state 5
+    IDENT           shift and go to state 12
+    INPUT           shift and go to state 16
+    OUTPUT          shift and go to state 17
+    VAR             shift and go to state 18
+    WHILE           shift and go to state 20
+    IF              shift and go to state 21
+
+    statements                     shift and go to state 24
+    statement                      shift and go to state 4
+    assign-stat                    shift and go to state 6
+    if-stat                        shift and go to state 7
+    while-stat                     shift and go to state 8
+    input-stat                     shift and go to state 9
+    output-stat                    shift and go to state 10
+    var-statement                  shift and go to state 11
+    if-then                        shift and go to state 13
+    if-then-else                   shift and go to state 14
+    while-part                     shift and go to state 15
+    if-part                        shift and go to state 19
+
+state 6
+
+    (6) statement -> assign-stat .
+
+    .               reduce using rule 6 (statement -> assign-stat .)
+    ;               reduce using rule 6 (statement -> assign-stat .)
+    }               reduce using rule 6 (statement -> assign-stat .)
+    ELSE            reduce using rule 6 (statement -> assign-stat .)
+
+
+state 7
+
+    (7) statement -> if-stat .
+
+    .               reduce using rule 7 (statement -> if-stat .)
+    ;               reduce using rule 7 (statement -> if-stat .)
+    }               reduce using rule 7 (statement -> if-stat .)
+    ELSE            reduce using rule 7 (statement -> if-stat .)
+
+
+state 8
+
+    (8) statement -> while-stat .
+
+    .               reduce using rule 8 (statement -> while-stat .)
+    ;               reduce using rule 8 (statement -> while-stat .)
+    }               reduce using rule 8 (statement -> while-stat .)
+    ELSE            reduce using rule 8 (statement -> while-stat .)
+
+
+state 9
+
+    (9) statement -> input-stat .
+
+    .               reduce using rule 9 (statement -> input-stat .)
+    ;               reduce using rule 9 (statement -> input-stat .)
+    }               reduce using rule 9 (statement -> input-stat .)
+    ELSE            reduce using rule 9 (statement -> input-stat .)
+
+
+state 10
+
+    (10) statement -> output-stat .
+
+    .               reduce using rule 10 (statement -> output-stat .)
+    ;               reduce using rule 10 (statement -> output-stat .)
+    }               reduce using rule 10 (statement -> output-stat .)
+    ELSE            reduce using rule 10 (statement -> output-stat .)
+
+
+state 11
+
+    (11) statement -> var-statement .
+    (12) var-statement -> var-statement . , IDENT
+
+    .               reduce using rule 11 (statement -> var-statement .)
+    ;               reduce using rule 11 (statement -> var-statement .)
+    }               reduce using rule 11 (statement -> var-statement .)
+    ELSE            reduce using rule 11 (statement -> var-statement .)
+    ,               shift and go to state 25
+
+
+state 12
+
+    (14) assign-stat -> IDENT . = expr
+
+    =               shift and go to state 26
+
+
+state 13
+
+    (23) if-stat -> if-then .
+    (26) if-then-else -> if-then . ELSE statement
+
+  ! shift/reduce conflict for ELSE resolved as shift
+    .               reduce using rule 23 (if-stat -> if-then .)
+    ;               reduce using rule 23 (if-stat -> if-then .)
+    }               reduce using rule 23 (if-stat -> if-then .)
+    ELSE            shift and go to state 27
+
+  ! ELSE            [ reduce using rule 23 (if-stat -> if-then .) ]
+
+
+state 14
+
+    (24) if-stat -> if-then-else .
+
+    .               reduce using rule 24 (if-stat -> if-then-else .)
+    ;               reduce using rule 24 (if-stat -> if-then-else .)
+    }               reduce using rule 24 (if-stat -> if-then-else .)
+    ELSE            reduce using rule 24 (if-stat -> if-then-else .)
+
+
+state 15
+
+    (31) while-stat -> while-part . do-expr
+    (33) do-expr -> . DO statement
+
+    DO              shift and go to state 29
+
+    do-expr                        shift and go to state 28
+
+state 16
+
+    (34) input-stat -> INPUT . IDENT
+
+    IDENT           shift and go to state 30
+
+
+state 17
+
+    (35) output-stat -> OUTPUT . expr
+    (15) expr -> . ( expr )
+    (16) expr -> . expr + value
+    (17) expr -> . expr - value
+    (18) expr -> . + value
+    (19) expr -> . - value
+    (20) expr -> . value
+    (21) value -> . CONST
+    (22) value -> . IDENT
+
+    (               shift and go to state 32
+    +               shift and go to state 33
+    -               shift and go to state 35
+    CONST           shift and go to state 36
+    IDENT           shift and go to state 37
+
+    expr                           shift and go to state 31
+    value                          shift and go to state 34
+
+state 18
+
+    (13) var-statement -> VAR . IDENT
+
+    IDENT           shift and go to state 38
+
+
+state 19
+
+    (25) if-then -> if-part . THEN statement
+
+    THEN            shift and go to state 39
+
+
+state 20
+
+    (32) while-part -> WHILE . log-expr
+    (28) log-expr -> . expr > expr
+    (29) log-expr -> . expr < expr
+    (30) log-expr -> . expr EQUAL expr
+    (15) expr -> . ( expr )
+    (16) expr -> . expr + value
+    (17) expr -> . expr - value
+    (18) expr -> . + value
+    (19) expr -> . - value
+    (20) expr -> . value
+    (21) value -> . CONST
+    (22) value -> . IDENT
+
+    (               shift and go to state 32
+    +               shift and go to state 33
+    -               shift and go to state 35
+    CONST           shift and go to state 36
+    IDENT           shift and go to state 37
+
+    log-expr                       shift and go to state 40
+    expr                           shift and go to state 41
+    value                          shift and go to state 34
+
+state 21
+
+    (27) if-part -> IF . log-expr
+    (28) log-expr -> . expr > expr
+    (29) log-expr -> . expr < expr
+    (30) log-expr -> . expr EQUAL expr
+    (15) expr -> . ( expr )
+    (16) expr -> . expr + value
+    (17) expr -> . expr - value
+    (18) expr -> . + value
+    (19) expr -> . - value
+    (20) expr -> . value
+    (21) value -> . CONST
+    (22) value -> . IDENT
+
+    (               shift and go to state 32
+    +               shift and go to state 33
+    -               shift and go to state 35
+    CONST           shift and go to state 36
+    IDENT           shift and go to state 37
+
+    log-expr                       shift and go to state 42
+    expr                           shift and go to state 41
+    value                          shift and go to state 34
+
+state 22
+
+    (1) program -> statements . .
+
+    $end            reduce using rule 1 (program -> statements . .)
+
+
+state 23
+
+    (3) statements -> statements ; . statement
+    (4) statement -> . { statements }
+    (6) statement -> . assign-stat
+    (7) statement -> . if-stat
+    (8) statement -> . while-stat
+    (9) statement -> . input-stat
+    (10) statement -> . output-stat
+    (11) statement -> . var-statement
+    (14) assign-stat -> . IDENT = expr
+    (23) if-stat -> . if-then
+    (24) if-stat -> . if-then-else
+    (31) while-stat -> . while-part do-expr
+    (34) input-stat -> . INPUT IDENT
+    (35) output-stat -> . OUTPUT expr
+    (12) var-statement -> . var-statement , IDENT
+    (13) var-statement -> . VAR IDENT
+    (25) if-then -> . if-part THEN statement
+    (26) if-then-else -> . if-then ELSE statement
+    (32) while-part -> . WHILE log-expr
+    (27) if-part -> . IF log-expr
+
+    {               shift and go to state 5
+    IDENT           shift and go to state 12
+    INPUT           shift and go to state 16
+    OUTPUT          shift and go to state 17
+    VAR             shift and go to state 18
+    WHILE           shift and go to state 20
+    IF              shift and go to state 21
+
+    statement                      shift and go to state 43
+    assign-stat                    shift and go to state 6
+    if-stat                        shift and go to state 7
+    while-stat                     shift and go to state 8
+    input-stat                     shift and go to state 9
+    output-stat                    shift and go to state 10
+    var-statement                  shift and go to state 11
+    if-then                        shift and go to state 13
+    if-then-else                   shift and go to state 14
+    while-part                     shift and go to state 15
+    if-part                        shift and go to state 19
+
+state 24
+
+    (4) statement -> { statements . }
+    (3) statements -> statements . ; statement
+
+    }               shift and go to state 44
+    ;               shift and go to state 23
+
+
+state 25
+
+    (12) var-statement -> var-statement , . IDENT
+
+    IDENT           shift and go to state 45
+
+
+state 26
+
+    (14) assign-stat -> IDENT = . expr
+    (15) expr -> . ( expr )
+    (16) expr -> . expr + value
+    (17) expr -> . expr - value
+    (18) expr -> . + value
+    (19) expr -> . - value
+    (20) expr -> . value
+    (21) value -> . CONST
+    (22) value -> . IDENT
+
+    (               shift and go to state 32
+    +               shift and go to state 33
+    -               shift and go to state 35
+    CONST           shift and go to state 36
+    IDENT           shift and go to state 37
+
+    expr                           shift and go to state 46
+    value                          shift and go to state 34
+
+state 27
+
+    (26) if-then-else -> if-then ELSE . statement
+    (4) statement -> . { statements }
+    (6) statement -> . assign-stat
+    (7) statement -> . if-stat
+    (8) statement -> . while-stat
+    (9) statement -> . input-stat
+    (10) statement -> . output-stat
+    (11) statement -> . var-statement
+    (14) assign-stat -> . IDENT = expr
+    (23) if-stat -> . if-then
+    (24) if-stat -> . if-then-else
+    (31) while-stat -> . while-part do-expr
+    (34) input-stat -> . INPUT IDENT
+    (35) output-stat -> . OUTPUT expr
+    (12) var-statement -> . var-statement , IDENT
+    (13) var-statement -> . VAR IDENT
+    (25) if-then -> . if-part THEN statement
+    (26) if-then-else -> . if-then ELSE statement
+    (32) while-part -> . WHILE log-expr
+    (27) if-part -> . IF log-expr
+
+    {               shift and go to state 5
+    IDENT           shift and go to state 12
+    INPUT           shift and go to state 16
+    OUTPUT          shift and go to state 17
+    VAR             shift and go to state 18
+    WHILE           shift and go to state 20
+    IF              shift and go to state 21
+
+    if-then                        shift and go to state 13
+    statement                      shift and go to state 47
+    assign-stat                    shift and go to state 6
+    if-stat                        shift and go to state 7
+    while-stat                     shift and go to state 8
+    input-stat                     shift and go to state 9
+    output-stat                    shift and go to state 10
+    var-statement                  shift and go to state 11
+    if-then-else                   shift and go to state 14
+    while-part                     shift and go to state 15
+    if-part                        shift and go to state 19
+
+state 28
+
+    (31) while-stat -> while-part do-expr .
+
+    .               reduce using rule 31 (while-stat -> while-part do-expr .)
+    ;               reduce using rule 31 (while-stat -> while-part do-expr .)
+    }               reduce using rule 31 (while-stat -> while-part do-expr .)
+    ELSE            reduce using rule 31 (while-stat -> while-part do-expr .)
+
+
+state 29
+
+    (33) do-expr -> DO . statement
+    (4) statement -> . { statements }
+    (6) statement -> . assign-stat
+    (7) statement -> . if-stat
+    (8) statement -> . while-stat
+    (9) statement -> . input-stat
+    (10) statement -> . output-stat
+    (11) statement -> . var-statement
+    (14) assign-stat -> . IDENT = expr
+    (23) if-stat -> . if-then
+    (24) if-stat -> . if-then-else
+    (31) while-stat -> . while-part do-expr
+    (34) input-stat -> . INPUT IDENT
+    (35) output-stat -> . OUTPUT expr
+    (12) var-statement -> . var-statement , IDENT
+    (13) var-statement -> . VAR IDENT
+    (25) if-then -> . if-part THEN statement
+    (26) if-then-else -> . if-then ELSE statement
+    (32) while-part -> . WHILE log-expr
+    (27) if-part -> . IF log-expr
+
+    {               shift and go to state 5
+    IDENT           shift and go to state 12
+    INPUT           shift and go to state 16
+    OUTPUT          shift and go to state 17
+    VAR             shift and go to state 18
+    WHILE           shift and go to state 20
+    IF              shift and go to state 21
+
+    statement                      shift and go to state 48
+    assign-stat                    shift and go to state 6
+    if-stat                        shift and go to state 7
+    while-stat                     shift and go to state 8
+    input-stat                     shift and go to state 9
+    output-stat                    shift and go to state 10
+    var-statement                  shift and go to state 11
+    if-then                        shift and go to state 13
+    if-then-else                   shift and go to state 14
+    while-part                     shift and go to state 15
+    if-part                        shift and go to state 19
+
+state 30
+
+    (34) input-stat -> INPUT IDENT .
+
+    .               reduce using rule 34 (input-stat -> INPUT IDENT .)
+    ;               reduce using rule 34 (input-stat -> INPUT IDENT .)
+    }               reduce using rule 34 (input-stat -> INPUT IDENT .)
+    ELSE            reduce using rule 34 (input-stat -> INPUT IDENT .)
+
+
+state 31
+
+    (35) output-stat -> OUTPUT expr .
+    (16) expr -> expr . + value
+    (17) expr -> expr . - value
+
+    .               reduce using rule 35 (output-stat -> OUTPUT expr .)
+    ;               reduce using rule 35 (output-stat -> OUTPUT expr .)
+    }               reduce using rule 35 (output-stat -> OUTPUT expr .)
+    ELSE            reduce using rule 35 (output-stat -> OUTPUT expr .)
+    +               shift and go to state 49
+    -               shift and go to state 50
+
+
+state 32
+
+    (15) expr -> ( . expr )
+    (15) expr -> . ( expr )
+    (16) expr -> . expr + value
+    (17) expr -> . expr - value
+    (18) expr -> . + value
+    (19) expr -> . - value
+    (20) expr -> . value
+    (21) value -> . CONST
+    (22) value -> . IDENT
+
+    (               shift and go to state 32
+    +               shift and go to state 33
+    -               shift and go to state 35
+    CONST           shift and go to state 36
+    IDENT           shift and go to state 37
+
+    expr                           shift and go to state 51
+    value                          shift and go to state 34
+
+state 33
+
+    (18) expr -> + . value
+    (21) value -> . CONST
+    (22) value -> . IDENT
+
+    CONST           shift and go to state 36
+    IDENT           shift and go to state 37
+
+    value                          shift and go to state 52
+
+state 34
+
+    (20) expr -> value .
+
+    +               reduce using rule 20 (expr -> value .)
+    -               reduce using rule 20 (expr -> value .)
+    .               reduce using rule 20 (expr -> value .)
+    ;               reduce using rule 20 (expr -> value .)
+    }               reduce using rule 20 (expr -> value .)
+    ELSE            reduce using rule 20 (expr -> value .)
+    >               reduce using rule 20 (expr -> value .)
+    <               reduce using rule 20 (expr -> value .)
+    EQUAL           reduce using rule 20 (expr -> value .)
+    )               reduce using rule 20 (expr -> value .)
+    DO              reduce using rule 20 (expr -> value .)
+    THEN            reduce using rule 20 (expr -> value .)
+
+
+state 35
+
+    (19) expr -> - . value
+    (21) value -> . CONST
+    (22) value -> . IDENT
+
+    CONST           shift and go to state 36
+    IDENT           shift and go to state 37
+
+    value                          shift and go to state 53
+
+state 36
+
+    (21) value -> CONST .
+
+    +               reduce using rule 21 (value -> CONST .)
+    -               reduce using rule 21 (value -> CONST .)
+    .               reduce using rule 21 (value -> CONST .)
+    ;               reduce using rule 21 (value -> CONST .)
+    }               reduce using rule 21 (value -> CONST .)
+    ELSE            reduce using rule 21 (value -> CONST .)
+    >               reduce using rule 21 (value -> CONST .)
+    <               reduce using rule 21 (value -> CONST .)
+    EQUAL           reduce using rule 21 (value -> CONST .)
+    )               reduce using rule 21 (value -> CONST .)
+    DO              reduce using rule 21 (value -> CONST .)
+    THEN            reduce using rule 21 (value -> CONST .)
+
+
+state 37
+
+    (22) value -> IDENT .
+
+    +               reduce using rule 22 (value -> IDENT .)
+    -               reduce using rule 22 (value -> IDENT .)
+    .               reduce using rule 22 (value -> IDENT .)
+    ;               reduce using rule 22 (value -> IDENT .)
+    }               reduce using rule 22 (value -> IDENT .)
+    ELSE            reduce using rule 22 (value -> IDENT .)
+    >               reduce using rule 22 (value -> IDENT .)
+    <               reduce using rule 22 (value -> IDENT .)
+    EQUAL           reduce using rule 22 (value -> IDENT .)
+    )               reduce using rule 22 (value -> IDENT .)
+    DO              reduce using rule 22 (value -> IDENT .)
+    THEN            reduce using rule 22 (value -> IDENT .)
+
+
+state 38
+
+    (13) var-statement -> VAR IDENT .
+
+    ,               reduce using rule 13 (var-statement -> VAR IDENT .)
+    .               reduce using rule 13 (var-statement -> VAR IDENT .)
+    ;               reduce using rule 13 (var-statement -> VAR IDENT .)
+    }               reduce using rule 13 (var-statement -> VAR IDENT .)
+    ELSE            reduce using rule 13 (var-statement -> VAR IDENT .)
+
+
+state 39
+
+    (25) if-then -> if-part THEN . statement
+    (4) statement -> . { statements }
+    (6) statement -> . assign-stat
+    (7) statement -> . if-stat
+    (8) statement -> . while-stat
+    (9) statement -> . input-stat
+    (10) statement -> . output-stat
+    (11) statement -> . var-statement
+    (14) assign-stat -> . IDENT = expr
+    (23) if-stat -> . if-then
+    (24) if-stat -> . if-then-else
+    (31) while-stat -> . while-part do-expr
+    (34) input-stat -> . INPUT IDENT
+    (35) output-stat -> . OUTPUT expr
+    (12) var-statement -> . var-statement , IDENT
+    (13) var-statement -> . VAR IDENT
+    (25) if-then -> . if-part THEN statement
+    (26) if-then-else -> . if-then ELSE statement
+    (32) while-part -> . WHILE log-expr
+    (27) if-part -> . IF log-expr
+
+    {               shift and go to state 5
+    IDENT           shift and go to state 12
+    INPUT           shift and go to state 16
+    OUTPUT          shift and go to state 17
+    VAR             shift and go to state 18
+    WHILE           shift and go to state 20
+    IF              shift and go to state 21
+
+    if-part                        shift and go to state 19
+    statement                      shift and go to state 54
+    assign-stat                    shift and go to state 6
+    if-stat                        shift and go to state 7
+    while-stat                     shift and go to state 8
+    input-stat                     shift and go to state 9
+    output-stat                    shift and go to state 10
+    var-statement                  shift and go to state 11
+    if-then                        shift and go to state 13
+    if-then-else                   shift and go to state 14
+    while-part                     shift and go to state 15
+
+state 40
+
+    (32) while-part -> WHILE log-expr .
+
+    DO              reduce using rule 32 (while-part -> WHILE log-expr .)
+
+
+state 41
+
+    (28) log-expr -> expr . > expr
+    (29) log-expr -> expr . < expr
+    (30) log-expr -> expr . EQUAL expr
+    (16) expr -> expr . + value
+    (17) expr -> expr . - value
+
+    >               shift and go to state 55
+    <               shift and go to state 56
+    EQUAL           shift and go to state 57
+    +               shift and go to state 49
+    -               shift and go to state 50
+
+
+state 42
+
+    (27) if-part -> IF log-expr .
+
+    THEN            reduce using rule 27 (if-part -> IF log-expr .)
+
+
+state 43
+
+    (3) statements -> statements ; statement .
+
+    .               reduce using rule 3 (statements -> statements ; statement .)
+    ;               reduce using rule 3 (statements -> statements ; statement .)
+    }               reduce using rule 3 (statements -> statements ; statement .)
+
+
+state 44
+
+    (4) statement -> { statements } .
+
+    .               reduce using rule 4 (statement -> { statements } .)
+    ;               reduce using rule 4 (statement -> { statements } .)
+    }               reduce using rule 4 (statement -> { statements } .)
+    ELSE            reduce using rule 4 (statement -> { statements } .)
+
+
+state 45
+
+    (12) var-statement -> var-statement , IDENT .
+
+    ,               reduce using rule 12 (var-statement -> var-statement , IDENT .)
+    .               reduce using rule 12 (var-statement -> var-statement , IDENT .)
+    ;               reduce using rule 12 (var-statement -> var-statement , IDENT .)
+    }               reduce using rule 12 (var-statement -> var-statement , IDENT .)
+    ELSE            reduce using rule 12 (var-statement -> var-statement , IDENT .)
+
+
+state 46
+
+    (14) assign-stat -> IDENT = expr .
+    (16) expr -> expr . + value
+    (17) expr -> expr . - value
+
+    .               reduce using rule 14 (assign-stat -> IDENT = expr .)
+    ;               reduce using rule 14 (assign-stat -> IDENT = expr .)
+    }               reduce using rule 14 (assign-stat -> IDENT = expr .)
+    ELSE            reduce using rule 14 (assign-stat -> IDENT = expr .)
+    +               shift and go to state 49
+    -               shift and go to state 50
+
+
+state 47
+
+    (26) if-then-else -> if-then ELSE statement .
+
+    .               reduce using rule 26 (if-then-else -> if-then ELSE statement .)
+    ;               reduce using rule 26 (if-then-else -> if-then ELSE statement .)
+    }               reduce using rule 26 (if-then-else -> if-then ELSE statement .)
+    ELSE            reduce using rule 26 (if-then-else -> if-then ELSE statement .)
+
+
+state 48
+
+    (33) do-expr -> DO statement .
+
+    .               reduce using rule 33 (do-expr -> DO statement .)
+    ;               reduce using rule 33 (do-expr -> DO statement .)
+    }               reduce using rule 33 (do-expr -> DO statement .)
+    ELSE            reduce using rule 33 (do-expr -> DO statement .)
+
+
+state 49
+
+    (16) expr -> expr + . value
+    (21) value -> . CONST
+    (22) value -> . IDENT
+
+    CONST           shift and go to state 36
+    IDENT           shift and go to state 37
+
+    value                          shift and go to state 58
+
+state 50
+
+    (17) expr -> expr - . value
+    (21) value -> . CONST
+    (22) value -> . IDENT
+
+    CONST           shift and go to state 36
+    IDENT           shift and go to state 37
+
+    value                          shift and go to state 59
+
+state 51
+
+    (15) expr -> ( expr . )
+    (16) expr -> expr . + value
+    (17) expr -> expr . - value
+
+    )               shift and go to state 60
+    +               shift and go to state 49
+    -               shift and go to state 50
+
+
+state 52
+
+    (18) expr -> + value .
+
+    +               reduce using rule 18 (expr -> + value .)
+    -               reduce using rule 18 (expr -> + value .)
+    .               reduce using rule 18 (expr -> + value .)
+    ;               reduce using rule 18 (expr -> + value .)
+    }               reduce using rule 18 (expr -> + value .)
+    ELSE            reduce using rule 18 (expr -> + value .)
+    >               reduce using rule 18 (expr -> + value .)
+    <               reduce using rule 18 (expr -> + value .)
+    EQUAL           reduce using rule 18 (expr -> + value .)
+    )               reduce using rule 18 (expr -> + value .)
+    DO              reduce using rule 18 (expr -> + value .)
+    THEN            reduce using rule 18 (expr -> + value .)
+
+
+state 53
+
+    (19) expr -> - value .
+
+    +               reduce using rule 19 (expr -> - value .)
+    -               reduce using rule 19 (expr -> - value .)
+    .               reduce using rule 19 (expr -> - value .)
+    ;               reduce using rule 19 (expr -> - value .)
+    }               reduce using rule 19 (expr -> - value .)
+    ELSE            reduce using rule 19 (expr -> - value .)
+    >               reduce using rule 19 (expr -> - value .)
+    <               reduce using rule 19 (expr -> - value .)
+    EQUAL           reduce using rule 19 (expr -> - value .)
+    )               reduce using rule 19 (expr -> - value .)
+    DO              reduce using rule 19 (expr -> - value .)
+    THEN            reduce using rule 19 (expr -> - value .)
+
+
+state 54
+
+    (25) if-then -> if-part THEN statement .
+
+    ELSE            reduce using rule 25 (if-then -> if-part THEN statement .)
+    .               reduce using rule 25 (if-then -> if-part THEN statement .)
+    ;               reduce using rule 25 (if-then -> if-part THEN statement .)
+    }               reduce using rule 25 (if-then -> if-part THEN statement .)
+
+
+state 55
+
+    (28) log-expr -> expr > . expr
+    (15) expr -> . ( expr )
+    (16) expr -> . expr + value
+    (17) expr -> . expr - value
+    (18) expr -> . + value
+    (19) expr -> . - value
+    (20) expr -> . value
+    (21) value -> . CONST
+    (22) value -> . IDENT
+
+    (               shift and go to state 32
+    +               shift and go to state 33
+    -               shift and go to state 35
+    CONST           shift and go to state 36
+    IDENT           shift and go to state 37
+
+    expr                           shift and go to state 61
+    value                          shift and go to state 34
+
+state 56
+
+    (29) log-expr -> expr < . expr
+    (15) expr -> . ( expr )
+    (16) expr -> . expr + value
+    (17) expr -> . expr - value
+    (18) expr -> . + value
+    (19) expr -> . - value
+    (20) expr -> . value
+    (21) value -> . CONST
+    (22) value -> . IDENT
+
+    (               shift and go to state 32
+    +               shift and go to state 33
+    -               shift and go to state 35
+    CONST           shift and go to state 36
+    IDENT           shift and go to state 37
+
+    expr                           shift and go to state 62
+    value                          shift and go to state 34
+
+state 57
+
+    (30) log-expr -> expr EQUAL . expr
+    (15) expr -> . ( expr )
+    (16) expr -> . expr + value
+    (17) expr -> . expr - value
+    (18) expr -> . + value
+    (19) expr -> . - value
+    (20) expr -> . value
+    (21) value -> . CONST
+    (22) value -> . IDENT
+
+    (               shift and go to state 32
+    +               shift and go to state 33
+    -               shift and go to state 35
+    CONST           shift and go to state 36
+    IDENT           shift and go to state 37
+
+    expr                           shift and go to state 63
+    value                          shift and go to state 34
+
+state 58
+
+    (16) expr -> expr + value .
+
+    +               reduce using rule 16 (expr -> expr + value .)
+    -               reduce using rule 16 (expr -> expr + value .)
+    .               reduce using rule 16 (expr -> expr + value .)
+    ;               reduce using rule 16 (expr -> expr + value .)
+    }               reduce using rule 16 (expr -> expr + value .)
+    ELSE            reduce using rule 16 (expr -> expr + value .)
+    >               reduce using rule 16 (expr -> expr + value .)
+    <               reduce using rule 16 (expr -> expr + value .)
+    EQUAL           reduce using rule 16 (expr -> expr + value .)
+    )               reduce using rule 16 (expr -> expr + value .)
+    DO              reduce using rule 16 (expr -> expr + value .)
+    THEN            reduce using rule 16 (expr -> expr + value .)
+
+
+state 59
+
+    (17) expr -> expr - value .
+
+    +               reduce using rule 17 (expr -> expr - value .)
+    -               reduce using rule 17 (expr -> expr - value .)
+    .               reduce using rule 17 (expr -> expr - value .)
+    ;               reduce using rule 17 (expr -> expr - value .)
+    }               reduce using rule 17 (expr -> expr - value .)
+    ELSE            reduce using rule 17 (expr -> expr - value .)
+    >               reduce using rule 17 (expr -> expr - value .)
+    <               reduce using rule 17 (expr -> expr - value .)
+    EQUAL           reduce using rule 17 (expr -> expr - value .)
+    )               reduce using rule 17 (expr -> expr - value .)
+    DO              reduce using rule 17 (expr -> expr - value .)
+    THEN            reduce using rule 17 (expr -> expr - value .)
+
+
+state 60
+
+    (15) expr -> ( expr ) .
+
+    +               reduce using rule 15 (expr -> ( expr ) .)
+    -               reduce using rule 15 (expr -> ( expr ) .)
+    .               reduce using rule 15 (expr -> ( expr ) .)
+    ;               reduce using rule 15 (expr -> ( expr ) .)
+    }               reduce using rule 15 (expr -> ( expr ) .)
+    ELSE            reduce using rule 15 (expr -> ( expr ) .)
+    >               reduce using rule 15 (expr -> ( expr ) .)
+    <               reduce using rule 15 (expr -> ( expr ) .)
+    EQUAL           reduce using rule 15 (expr -> ( expr ) .)
+    )               reduce using rule 15 (expr -> ( expr ) .)
+    DO              reduce using rule 15 (expr -> ( expr ) .)
+    THEN            reduce using rule 15 (expr -> ( expr ) .)
+
+
+state 61
+
+    (28) log-expr -> expr > expr .
+    (16) expr -> expr . + value
+    (17) expr -> expr . - value
+
+    DO              reduce using rule 28 (log-expr -> expr > expr .)
+    THEN            reduce using rule 28 (log-expr -> expr > expr .)
+    +               shift and go to state 49
+    -               shift and go to state 50
+
+
+state 62
+
+    (29) log-expr -> expr < expr .
+    (16) expr -> expr . + value
+    (17) expr -> expr . - value
+
+    DO              reduce using rule 29 (log-expr -> expr < expr .)
+    THEN            reduce using rule 29 (log-expr -> expr < expr .)
+    +               shift and go to state 49
+    -               shift and go to state 50
+
+
+state 63
+
+    (30) log-expr -> expr EQUAL expr .
+    (16) expr -> expr . + value
+    (17) expr -> expr . - value
+
+    DO              reduce using rule 30 (log-expr -> expr EQUAL expr .)
+    THEN            reduce using rule 30 (log-expr -> expr EQUAL expr .)
+    +               shift and go to state 49
+    -               shift and go to state 50
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for ELSE in state 13 resolved as shift
