@@ -4,7 +4,6 @@ def find_column(input, token):
     line_start = input.rfind('\n', 0, token.lexpos) + 1
     return (token.lexpos - line_start) + 1
 
-
 def print_lexer_table(lexer):
     lexer_table = PrettyTable()
     lexer_table.field_names = ['Line', 'Token', 'Associated value']

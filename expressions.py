@@ -2,14 +2,12 @@ class Expression(object):
     def evaluate(self):
         raise NotImplementedError
 
-
 class Number(Expression):
     def __init__(self, value):
         self.value = value
 
     def evaluate(self):
         return self.value
-
 
 class BinaryOperation(Expression):
     def __init__(self, left, right, operator):
