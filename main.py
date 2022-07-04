@@ -6,7 +6,7 @@ from os import path
 from helper import print_lexer_table
 
 script_dir = path.dirname(__file__)
-source_code = path.join(script_dir, 'juice.txt')
+source_code = path.join(script_dir, 'code.juice')
 
 f = open(source_code, 'r')
 

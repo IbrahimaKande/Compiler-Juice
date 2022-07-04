@@ -18,7 +18,6 @@ literals = ['.', ';', '{', '}', '(', ')', '=', '+', '-', '<', '>', ',']
 t_ignore = ' \t'
 t_ignore_COMMENT = r'\#.*'
 
-
 def t_IDENT(t):
     r'[a-zA-Z_][a-zA-Z_0-9]*'
     t.type = reserved.get(t.value, 'IDENT')

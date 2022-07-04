@@ -126,4 +126,4 @@ def p_empty(p):
     p[0] = None
 
 def p_error(p):
-    print("Syntax error found! {}".format(p))
+    print("Syntax error! {}".format(p))
